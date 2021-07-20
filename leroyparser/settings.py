@@ -35,7 +35,7 @@ DOWNLOAD_DELAY = 1.5
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
+COOKIES_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -49,24 +49,23 @@ COOKIES_ENABLED = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'leroyparser.middlewares.leroyparserSpiderMiddleware': 543,
+#    'leroyparser.middlewares.LeroyparserSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'Leroyparser.middlewares.LeroyparserDownloaderMiddleware': 543,
+#    'leroyparser.middlewares.LeroyparserDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-# EXTENSIONS = {
+#EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-# }
+#}
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-
 ITEM_PIPELINES = {
    'leroyparser.pipelines.LeroyparserPipeline': 300,
    'leroyparser.pipelines.LeroyparserPhotosPipeline': 200,

@@ -7,14 +7,11 @@ import scrapy
 from itemloaders.processors import MapCompose, TakeFirst
 from w3lib.html import strip_html5_whitespace
 
-
 def change_photo_link(value):
     value = value.replace(',w_82,h_82,c_pad,b_white,d_photoiscoming.png', '')
     return value
 
-
-class LeroyItem(scrapy.Item):
-    # define the fields for your item here like:
+class LeroyparserItem(scrapy.Item):
     name = scrapy.Field(output_processor=TakeFirst())
     price = scrapy.Field(output_processor=TakeFirst())
     photos = scrapy.Field(input_processor=MapCompose(change_photo_link))
