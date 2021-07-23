@@ -5,10 +5,16 @@
 
 
 # useful for handling different item types with a single interface
-import scrapy
 from itemadapter import ItemAdapter
+import scrapy
 from scrapy.pipelines.images import ImagesPipeline
 from pymongo import MongoClient
+custom_setings = {
+    'ITEM_PIPELINES': {
+   'leroyparser.pipelines.LeroyparserPipeline': 300,
+   'leroyparser.pipelines.LeroyparserPhotosPipeline': 200,
+}
+}
 
 
 class LeroyparserPipeline:
@@ -18,7 +24,7 @@ class LeroyparserPipeline:
 
     def process_item(self, item, spider):
         item = self.process_feature(item)
-        collection = self.mongobase['leroy']
+        collection = self.mongobase[spider.name]
         collection.insert_one(item)
         return item
 
@@ -30,8 +36,6 @@ class LeroyparserPipeline:
         del item['list__term']
         del item['list__definition']
         return item
-
-
 class LeroyparserPhotosPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
         if item['photos']:
